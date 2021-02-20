@@ -11,12 +11,14 @@ It can clean large directories and support many files !
 
 ## Usage
 You can use this tool with this simple command :
-clean_dir
-cleandir
+- clean_dir
+- cleandir
+
+You can add all the file extensions you want in the cleanlist.txt file
 
 Also, you can add arguments :
--r : remove your files recursively
--o : display output log
+- -r : remove your files recursively
+- -o : display output log
 
 
 ## Setup
