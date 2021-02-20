@@ -1,0 +1,12 @@
+### CLean List ###
+
+*.slo
+*.lo
+*.o
+*.gch
+*.pch
+*.so
+*.dylib
+*.d
+*.out
+*.tags
