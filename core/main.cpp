@@ -6,7 +6,7 @@
 /*   By: vvaucoul <vvaucoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 18:22:54 by vvaucoul          #+#    #+#             */
-/*   Updated: 2021/02/20 19:58:48 by vvaucoul         ###   ########.fr       */
+/*   Updated: 2021/02/20 20:58:03 by vvaucoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ int main(int ac, char const **argv)
 {
 	try
 	{
-		cleanDir("cleanlist.txt", ac, argv);
+		char *actudir = (char *)calloc(4096, sizeof(char));
+
+		actudir = strcat(actudir, getenv("HOME"));
+		actudir = strcat(actudir, "/.cleanlist.txt");
+		cleanDir(actudir, ac, argv);
 	}
 	catch (std::string &error)
 	{
