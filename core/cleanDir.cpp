@@ -6,7 +6,7 @@
 /*   By: vvaucoul <vvaucoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 18:20:31 by vvaucoul          #+#    #+#             */
-/*   Updated: 2021/02/20 20:09:56 by vvaucoul         ###   ########.fr       */
+/*   Updated: 2021/02/20 20:50:55 by vvaucoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ void cleanDir::getFiles(char *current_directory, bool recursif)
 	struct dirent		*diread;
 
 	if (!(dir = opendir(current_directory)))
-		throw std::string("Error : failed to open dir !");
+	{
+		std::cerr << std::string("Failed to open directory") + current_directory << '\n';
+		return ;
+	}
 	while ((diread = readdir(dir)) != NULL)
 	{
 		if (diread->d_type == DT_REG && containRule(diread->d_name))
@@ -110,8 +113,7 @@ void cleanDir::getFiles(char *current_directory, bool recursif)
 			_filesToRemove.push_back(str);
 		}
 		else if (diread->d_type == DT_DIR && recursif &&
-			strcmp(diread->d_name, ".") &&
-			strcmp(diread->d_name, "..")
+			std::string(diread->d_name).find(".") == std::string::npos
 		)
 			getFiles(strcat(strcat(current_directory, "/"), diread->d_name), recursif); // recursif
 	}
