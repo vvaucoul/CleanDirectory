@@ -5,7 +5,7 @@ Usefull tool to clean your project directory
 * [Usage](#usage)
 * [Setup](#setup)
 
-## Informations infos
+## Informations
 Clean Directory is a tool to clean your projects directories.
 It can clean large directories and support many files !
 
